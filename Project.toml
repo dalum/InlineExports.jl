@@ -1,0 +1,4 @@
+name = "InlineExports"
+uuid = "7cff2dbe-3b76-11e9-264f-09062bebdf39"
+authors = ["Sakse Dalum <dalum@users.noreply.github.com>"]
+version = "0.1.0"
