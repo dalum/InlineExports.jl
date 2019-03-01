@@ -57,8 +57,8 @@ handle(::Val{:macro}, expr) = Symbol("@", handle(expr.args[1]))
 handle(::Val{:struct}, expr) = handle(expr.args[2])
 handle(::Union{Val{:abstract}, Val{:primitive}}, expr) = handle(expr.args[1])
 
-handle(::Val{:<:}, expr) = expr.args[1]
-handle(::Val{:curly}, expr) = expr.args[1]
-handle(::Val{:call}, expr) = expr.args[1]
+handle(::Val{:<:}, expr) = handle(expr.args[1])
+handle(::Val{:curly}, expr) = handle(expr.args[1])
+handle(::Val{:call}, expr) = handle(expr.args[1])
 
 end # module
