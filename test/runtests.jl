@@ -8,7 +8,7 @@ using InlineExports
 end
 
 using .M1
-@test isnothing(M1f())
+@test M1f() === nothing
 
 module M2
 using InlineExports

@@ -50,7 +50,7 @@ handle(::Any) = nothing
 handle(x::Symbol) = x
 handle(expr::Expr) = handle(Val(expr.head), expr)
 
-handle(::Val{:block}, expr) = filter(!isnothing, map(handle, expr.args))
+handle(::Val{:block}, expr) = filter(x -> x !== nothing, map(handle, expr.args))
 handle(::Val{:const}, expr) = handle(expr.args[1])
 handle(::Val{:(=)}, expr) = handle(expr.args[1])
 handle(::Val{:function}, expr) = handle(expr.args[1])
@@ -62,6 +62,6 @@ handle(::Union{Val{:abstract}, Val{:primitive}}, expr) = handle(expr.args[1])
 handle(::Val{:<:}, expr) = handle(expr.args[1])
 handle(::Val{:curly}, expr) = handle(expr.args[1])
 handle(::Val{:call}, expr) = handle(expr.args[1])
-handle(::Val{:macrocall}, expr) = filter(!isnothing, map(handle, expr.args[3:end]))
+handle(::Val{:macrocall}, expr) = filter(x -> x !== nothing, map(handle, expr.args[3:end]))
 
 end # module
