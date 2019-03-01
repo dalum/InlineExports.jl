@@ -33,7 +33,7 @@ end
     val::Number
 end
 
-M2f(a::M2T) = M2f(a.val)
+@export @inline M2f(a::M2T) = M2f(a.val)
 
 @export function M2g(a::M2TP{T}) where {T<:Number}
     return convert(T, M2f(a.val))

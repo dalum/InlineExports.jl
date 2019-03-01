@@ -62,5 +62,6 @@ handle(::Union{Val{:abstract}, Val{:primitive}}, expr) = handle(expr.args[1])
 handle(::Val{:<:}, expr) = handle(expr.args[1])
 handle(::Val{:curly}, expr) = handle(expr.args[1])
 handle(::Val{:call}, expr) = handle(expr.args[1])
+handle(::Val{:macrocall}, expr) = filter(!isnothing, map(handle, expr.args[3:end]))
 
 end # module
