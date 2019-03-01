@@ -53,7 +53,7 @@ end
 `@export` current does not work with attaching docstrings to a
 function.  The following will throw an error by the documentation
 system:
-```
+```julia
 """
 ...
 """
