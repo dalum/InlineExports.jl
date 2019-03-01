@@ -21,6 +21,9 @@ end
 
 @export abstract type M2S{T} <: Number end
 @export primitive type M2P <: Number 8 end
+@export macro M2macro(expr)
+    expr
+end
 
 @export struct M2TP{T} <: M2S{T}
     val::T
@@ -31,7 +34,10 @@ end
 end
 
 M2f(a::M2T) = M2f(a.val)
-M2f(a::M2TP{T}) where {T} = convert(T, M2f(a.val))
+
+@export function M2g(a::M2TP{T}) where {T<:Number}
+    return convert(T, M2f(a.val))
+end
 
 @export M2t = M2T(M2a)
 @export M2tp = M2TP(M2c)
@@ -43,7 +49,6 @@ using .M2
 @test M2f(M2b) == 9.0
 @test M2f(M2c) == -49
 @test M2f(M2t) == M2f(M2a)
-@test M2f(M2tp) == M2f(M2c)
-@test M2f(M2tp) == M2f(M2c)
+@test M2g(M2tp) == M2f(M2c)
 
 end #module
