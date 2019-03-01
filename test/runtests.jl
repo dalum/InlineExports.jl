@@ -42,6 +42,11 @@ end
 @export M2t = M2T(M2a)
 @export M2tp = M2TP(M2c)
 
+"""
+    docstring
+"""
+@export function M2h end
+
 end
 
 using .M2

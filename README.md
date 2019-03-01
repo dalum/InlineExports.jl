@@ -27,6 +27,11 @@ function f(x)
     ...
 end
 
+"""
+    g(x)
+
+...
+"""
 @export function g(x)
     ...
 end
@@ -50,16 +55,4 @@ using InlineExports
 end
 
 end
-```
-
-## Limitations
-
-`@export` does not currently work with attaching docstrings to a
-function.  The following will throw an error by the documentation
-system:
-```julia
-"""
-...
-"""
-@export f() = nothing
 ```

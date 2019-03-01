@@ -1,5 +1,7 @@
 module InlineExports
 
+import Base: @__doc__
+
 export @export
 
 quote
@@ -33,12 +35,12 @@ quote
         if r isa Symbol
             return quote
                 export $(esc(r))
-                $(esc(expr))
+                @__doc__ $(esc(expr))
             end
         else
             return quote
                 export $(map(esc, r)...)
-                $(esc(expr))
+                @__doc__ $(esc(expr))
             end
         end
     end
