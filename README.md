@@ -47,3 +47,15 @@ end
 
 end
 ```
+
+## Limitations
+
+`@export` current does not work with attaching docstrings to a
+function.  The following will throw an error by the documentation
+system:
+```
+"""
+...
+"""
+@export f() = nothing
+```

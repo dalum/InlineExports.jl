@@ -32,13 +32,13 @@ quote
         r = handle(expr)
         if r isa Symbol
             return quote
-                $(esc(expr))
                 export $(esc(r))
+                $(esc(expr))
             end
         else
             return quote
-                $(esc(expr))
                 export $(map(esc, r)...)
+                $(esc(expr))
             end
         end
     end
