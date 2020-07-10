@@ -56,3 +56,18 @@ end
 
 end
 ```
+
+## Disabling inline exports
+
+If you wish to disable all inline exports without removing all `@export` macro calls, `InlineExports` provides a convenience submodule, `InlineExports.NoExport`.  This submodule exports a definition of the `@export` macro which returns the expression untouched.  As an example, this module does not export the function `f(x)`:
+```julia
+module M
+
+using InlineExports.NoExport
+
+# Export statements have been disabled.  This function will not be exported
+@export function f(x)
+    ...
+end
+
+```

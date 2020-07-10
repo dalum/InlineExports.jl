@@ -64,4 +64,6 @@ handle(::Val{:curly}, expr) = handle(expr.args[1])
 handle(::Val{:call}, expr) = handle(expr.args[1])
 handle(::Val{:macrocall}, expr) = filter(x -> x !== nothing, map(handle, expr.args[3:end]))
 
+include("NoExport.jl")
+
 end # module

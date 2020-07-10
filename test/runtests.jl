@@ -8,7 +8,10 @@ using InlineExports
 end
 
 using .M1
-@test M1f() === nothing
+
+@testset "Simple function" begin
+    @test M1f() === nothing
+end
 
 module M2
 using InlineExports
@@ -50,10 +53,25 @@ end
 end
 
 using .M2
-@test M2f(M2a) == 4
-@test M2f(M2b) == 9.0
-@test M2f(M2c) == -49
-@test M2f(M2t) == M2f(M2a)
-@test M2g(M2tp) == M2f(M2c)
+
+@testset "Advanced module" begin
+    @test M2f(M2a) == 4
+    @test M2f(M2b) == 9.0
+    @test M2f(M2c) == -49
+    @test M2f(M2t) == M2f(M2a)
+    @test M2g(M2tp) == M2f(M2c)
+end
+
+module M3
+using InlineExports.NoExport
+@export M3f() = 42
+end
+
+using .M3
+
+@testset "NoExport" begin
+    @test_throws UndefVarError M3f()
+    @test M3.M3f() === 42
+end
 
 end #module
