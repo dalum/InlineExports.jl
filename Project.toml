@@ -1,7 +1,7 @@
 name = "InlineExports"
 uuid = "809d7502-0c9d-5bc2-962a-5201dc498f73"
 authors = ["Sakse Dalum <dalum@users.noreply.github.com>"]
-version = "0.1.1"
+version = "0.1.2"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
