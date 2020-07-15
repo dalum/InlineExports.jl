@@ -52,6 +52,7 @@ handle(expr::Expr) = handle(Val(expr.head), expr)
 
 handle(::Val{:block}, expr) = filter(x -> x !== nothing, map(handle, expr.args))
 handle(::Val{:const}, expr) = handle(expr.args[1])
+handle(::Val{:(::)}, expr) = handle(expr.args[1])
 handle(::Val{:(=)}, expr) = handle(expr.args[1])
 handle(::Val{:function}, expr) = handle(expr.args[1])
 handle(::Val{:where}, expr) = handle(expr.args[1])
